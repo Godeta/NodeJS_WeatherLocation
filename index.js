@@ -38,6 +38,18 @@ app.post('/api', function (request, response) {
     response.json(allData); //renvoie le tableau
 });
 
+//GET method route
+app.get("/api", (request, response) => {
+    database.find({}, (err, data) => { //cherche les données dans la base
+        if (err) { //si il y a une erreur on arrête tout
+            response.end();
+            return;
+        }
+        response.json(data); //retourne les données
+    })
+
+})
+
 //se déclenche si je fait "node index.js" dans le cmd
 /*objectifs :  1) lorsque l'on accède à la page, afficher tout le html,css,javascript comme normal
 2) recevoir des informations et les enregistrer dans une base de donnée + authentification
