@@ -8,8 +8,6 @@
 </head>
 
 <body>
-
-    <script src="./clientSide.js"></script>
     <h1> Geolocalisation ! </h1>
     <p> Ici la partie geolocalisation ! :D
         <br />
@@ -22,6 +20,12 @@
         longitude : <span id="lon"></span> &deg; <br />
         précision : <span id="accu"></span> mètres <br />
     </p>
+    <!--Ajout d'un bouton pour démarrer la géolocalisation-->
+    <button id="geolocate">geolocate</button>
+    <span id="button_text">Pour lancer la recherche...</span>
+
+    <!-- Attention le script doit être en dessous sinon il ne peut pas détecter les différents élements avec leur id-->
+    <script src="./clientSide.js"></script>
 </body>
 
 </html>
