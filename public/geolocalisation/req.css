@@ -1,0 +1,28 @@
+.pack {
+    /*class créee dans le javascript pour chaque nom, locali,date...*/
+    font-weight: bold;
+    color: black;
+    font-size: large;
+
+}
+
+.nom {
+    /*classe crée dans le JS, chaque nom en début de paragraphe*/
+    color: brown;
+}
+
+body {
+    background-color: beige;
+}
+
+h1 {
+    /*pour décorer le titre*/
+    font-size: 60px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+    color: rgb(161, 23, 16);
+    border: 5px solid black;
+    text-shadow: 3px 3px 1px black;
+}
