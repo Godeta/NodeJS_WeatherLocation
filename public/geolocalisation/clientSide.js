@@ -3,6 +3,7 @@
 let lat;
 let lon;
 let accu;
+let nom;
 
 document.getElementById("geolocate").addEventListener('click', event => { //lorsque l'on a cliqué sur le bouton
 
@@ -20,11 +21,13 @@ document.getElementById("geolocate").addEventListener('click', event => { //lors
             document.getElementById("lat").textContent = lat;
             document.getElementById("lon").textContent = lon;
             document.getElementById("accu").textContent = accu;
+            nom = document.getElementById('nom').value;
 
             //données que l'on veut transmettre au serveur
             const data = {
                 lat,
                 lon,
+                nom,
                 accu
             };
             const options = { //doc : https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
@@ -51,9 +54,11 @@ document.getElementById("geolocate").addEventListener('click', event => { //lors
 //si on appuit sur le bouton
 const button = document.getElementById('submit');
 button.addEventListener('click', async event => {
+    nom = document.getElementById('nom').value;
     const data = { //données
         lat,
-        lon
+        lon,
+        nom
     };
     const options = { //envoyer JSON données
         method: 'POST',

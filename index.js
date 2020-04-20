@@ -1,5 +1,6 @@
 //index.js est la partie orienté serveur tandis que le html ou d'autres javascript seront les parties clients
 const express = require("express"); //(lorsque l'on fait node index.js ou nodemon index.js) création d'un serveur sur le port 3000 -> http://localhost:3000/
+const Datastore = require("nedb"); //appelle nedb pour stocker les données dans un db
 const app = express();
 app.listen(3000, () => console.log("Listening at 3000"));
 app.use(express.static("public"));
@@ -8,13 +9,26 @@ app.use(express.json({
 }));
 
 const allData = []; //tableau contenant toutes les données reçues
+const database = new Datastore("GeolocalDatabase.db"); //fichier dans lequel on mettra les informations
+database.loadDatabase(); //appelle le fichier et le créer si il n'existe pas déjà
+/*database.insert({
+    name: "Titouan",
+    status: "🥵"
+});
+database.insert({
+    name: "Jesus",
+    status: "🥰"
+});*/
 
 // POST method route
 app.post('/api', function (request, response) {
     console.log("J'ai une requête !");
     //console.log(request.body); //si on met toute la requête on a beaucoup de données qui ne nous intéresse pas ici
     const data = request.body;
-    allData.push(data); //ajoue des données au tableau
+    const timestamp = Date.now(); //l'heure actuelle en millisecondes
+    data.timestamp = timestamp; //ajoute une variable timestamp dans data qui prend la valeur de l'heure actuelle
+    allData.push(data); //ajoute des données au tableau
+    database.insert(data); //ajoute les données dans la base
     /*response.json({ //renvoie un object java au client
         status: "success",
         latitude: data.lat,
