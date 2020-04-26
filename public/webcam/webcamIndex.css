@@ -1,0 +1,18 @@
+.loadWebcam {
+    background-color: gray;
+    color: aliceblue;
+    font-size: 20px;
+    transition-duration: 0.4s;
+}
+
+.loadWebcam:hover {
+
+    background-color: yellow;
+    color: grey;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

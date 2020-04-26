@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"
+        integrity="sha256-Pg1di+fBF53Rbh9oZR/FeD1xsFzTLC963lcac1D0ias=" crossorigin="anonymous"></script>
+    <title>Webcam</title>
+</head>
+
+<body>
+    <h1> Hey, welcome here ! </h1>
+    <p> Faites de jolis dessins ! ^^
+        <br />
+        <a href="../index.html"> Acceuil</a>
+        <br />
+        <a href="./dessins.html"> Affichage dessins</a>
+
+    </p>
+
+    <button id="submit">Valider le dessin</button>
+    <a id="download" download="image.png"><button type="button" onClick="download()">Télecharger</button></a> <br />
+    <p> Vous pouvez appuyer sur "C" pour nettoyer l'espace pour dessiner.</p>
+
+    <!-- Endroit où l'on entre un nom, valeur de base Melegim si l'on en donne pas-->
+    <br /> <label for="nom">Entrez le nom du dessin</label>
+    <input id="nom" value="Dessin Nom" />
+
+    <script src="draw.js"></script>
+</body>
+
+</html>

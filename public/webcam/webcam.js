@@ -1,13 +1,20 @@
 //vidéo de la webcam initialisé dans le setup
 let video = null;
 
+
 function setup() {
     //instructions p5.js pour récupérer la vidéo de la webcam et envoyer les données d'une image au serveur
     noCanvas();
-    video = createCapture(VIDEO); //récupère et affiche la vidéo de la webcam
-    video.size(320, 240); //règle la taille
-    video.loadPixels();
+    //afficher la webcam lors d'un clic sur le bouton load webcam
+    const load = document.getElementById('loadWebcam');
+    //si on appuit sur le bouton 
+    load.addEventListener('click', async event => {
+        video = createCapture(VIDEO); //récupère et affiche la vidéo de la webcam
+        video.size(320, 240); //règle la taille
+        video.loadPixels();
+    });
 }
+
 
 //permet de télecharger l'image -> clic sur download
 function download() {

@@ -1,0 +1,9 @@
+div {
+    padding: 10px;
+
+    border: 4px solid rgb(37, 51, 177);
+}
+
+.pack {
+    border: 6px double rgb(255, 135, 215);
+}
