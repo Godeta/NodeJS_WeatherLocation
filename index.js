@@ -43,6 +43,7 @@ app.get("/api", (request, response) => {
     database.find({}, (err, data) => { //cherche les données dans la base
         if (err) { //si il y a une erreur on arrête tout
             response.end();
+            console.log("Attention erreur dans le chargement des données !");
             return;
         }
         response.json(data); //retourne les données

@@ -1,3 +1,4 @@
+//code executé
 getData();
 
 async function getData() {
@@ -8,14 +9,15 @@ async function getData() {
         root.className = "pack";
         const nom = document.createElement("div");
         nom.className = "nom";
-        const geo = document.createElement("div");
+        const webcam = document.createElement("img"); //image au lieu d'un div
         const date = document.createElement("div");
         nom.textContent = 'nom : ' + item.nom; //nomvenant de l'objet item parcourant le tableau data -> response.json
-        geo.textContent = "localisation : " + item.lat + "°, " + item.lon + ", " + item.accu + "°"; //affichage de la localisation
+        webcam.src = item.ImageText64; //affichage de l'image
+        webcam.alt = "Photo prise avec la webcam" //ajout d'une description de l'image
 
         const dateString = new Date(item.timestamp).toLocaleString(); //date remise sous forme de String
         date.textContent = "date : " + dateString;
-        root.append(nom, geo, date); //on ajoute les différents div dans le div root
+        root.append(nom, webcam, date); //on ajoute les différents div dans le div root
         document.body.append(root); //on ajoute le div root au body
     }
 }
