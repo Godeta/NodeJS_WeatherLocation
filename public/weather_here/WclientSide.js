@@ -13,11 +13,7 @@ document.getElementById("geolocate").addEventListener('click', event => { //lors
         console.log("geolocalisation disponible");
         navigator.geolocation.getCurrentPosition(async function (position) { //récupère la position actuelle, async function(position) pareil que async position =>
             document.getElementById("button_text").textContent = "Localisation trouvée !!!";
-            //récuperation de la méteo avec weatherstack api doit être effectuée dans le serveur sinon il n'accepte pas que le client y ai accès-> sécurité !
-            const api_url = '/weather';
-            const fetch_response = await fetch(api_url);
-            const json = await fetch_response.json();
-            console.log(json);
+
             //récupération données dans variable
             lat = position.coords.latitude;
             lon = position.coords.longitude;
@@ -27,6 +23,14 @@ document.getElementById("geolocate").addEventListener('click', event => { //lors
             document.getElementById("lon").textContent = lon;
             document.getElementById("accu").textContent = accu;
             nom = document.getElementById('nom').value;
+
+            //récuperation de la méteo avec weatherstack api doit être effectuée dans le serveur sinon il n'accepte pas que le client y ai accès-> sécurité !
+            const api_url = `/weather/${lat},${lon}`;
+            const fetch_response = await fetch(api_url);
+            const json = await fetch_response.json();
+
+            //données météo que l'on souhaite utiliser
+            console.log(json);
 
             //données que l'on veut transmettre au serveur
             const data = {
