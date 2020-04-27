@@ -25,6 +25,11 @@ h1 {
     text-shadow: 3px 3px 1px black;
 }
 
+/*pour la carte*/
+#WhereMap {
+    height: 180px;
+}
+
 #meteo,
 #meteo2 {
     margin: 20px;
