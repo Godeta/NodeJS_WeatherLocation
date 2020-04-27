@@ -24,7 +24,7 @@ document.getElementById("geolocate").addEventListener('click', event => { //lors
             document.getElementById("accu").textContent = accu;
             nom = document.getElementById('nom').value;
 
-            //récuperation de la méteo avec weatherstack api doit être effectuée dans le serveur sinon il n'accepte pas que le client y ai accès-> sécurité !
+            //récuperation de la méteo avec openweather api doit être effectuée dans le serveur sinon il n'accepte pas que le client y ai accès-> sécurité !
             const api_url = `/weather/${lat},${lon}`;
             const fetch_response = await fetch(api_url);
             const json = await fetch_response.json();
@@ -32,12 +32,36 @@ document.getElementById("geolocate").addEventListener('click', event => { //lors
             //données météo que l'on souhaite utiliser
             console.log(json);
 
+            //affichage des données météo
+            let ville = json.weather.name; //.weather car j'ai regroupé les données des deux api dans weather et l'autre dans airQuality
+            let tempC = json.weather.main.temp;
+            let meteo = json.weather.weather[0].description;
+            let airQua, unit, lastUpdate;
+            try { //essaye de récupérer les données pour la qualité de l'air
+                airQua = json.airQuality.results[0].measurements[0].value;
+                unit = json.airQuality.results[0].measurements[0].unit;
+                lastUpdate = json.airQuality.results[0].measurements[0].lastUpdated;
+                document.getElementById("airQ").innerHTML = "Qualité de l'air : " + airQua + unit + " dernière mise à jour : " + lastUpdate;
+            } catch (error) { //sinon affiche que les données sont indisponibles
+                document.getElementById("airQ").innerHTML = "Qaulité de l'air indisponible pour cette geolocalisation :/";
+            }
+            document.getElementById("city").innerHTML = "Ville : " + ville;
+            document.getElementById("meteo").innerHTML = "Données météorologiques : Température : <b>" + tempC + "</b>, Température ressentie : <b>" + json.weather.main.feels_like + "</b>";
+            document.getElementById("meteo2").innerHTML = 'Méteo : <b>' + meteo + "</b>, Température minimum de la journée : <b>" + json.weather.main.temp_min + "</b>";
+
+
             //données que l'on veut transmettre au serveur
             const data = {
                 lat,
                 lon,
                 nom,
-                accu
+                accu,
+                ville,
+                tempC,
+                meteo,
+                airQua,
+                unit,
+                lastUpdate
             };
             const options = { //doc : https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
                 method: "POST",
@@ -58,25 +82,3 @@ document.getElementById("geolocate").addEventListener('click', event => { //lors
         document.getElementById("button_text").textContent = "Erreur, localisation indisponible !!!";
     }
 }); //fin de si on a cliqué sur le bouton
-
-//requête serveur dans un array
-//si on appuit sur le bouton
-const button = document.getElementById('submit');
-button.addEventListener('click', async event => {
-    nom = document.getElementById('nom').value;
-    const data = { //données
-        lat,
-        lon,
-        nom
-    };
-    const options = { //envoyer JSON données
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    };
-    const response = await fetch('/api', options); //envoyer les données
-    const json = await response.json(); //récupérer la réponse
-    console.log(json); //afficher la réponse
-});

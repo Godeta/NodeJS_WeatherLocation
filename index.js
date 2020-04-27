@@ -63,10 +63,22 @@ app.get("/weather/:latlon", async (request, response) => {
     const lon = latlon[1];
     const weatherKey = "";
     console.log(lat, lon);
-    const weatherApiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherKey}`; //adresse + clé d'accès
-    const fetch_response = await fetch(weatherApiURL);
-    const json = await fetch_response.json();
-    response.json(json); //renvoit les données
+    //Lien de l'api : https://openweathermap.org/current
+    const weatherApiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherKey}&units=metric`; //adresse + clé d'accès
+    const weather_response = await fetch(weatherApiURL);
+    const weather_json = await weather_response.json();
+
+    //Lien de l'api : https://docs.openaq.org/
+    const airQApiURL = `https://api.openaq.org/v1/latest?coordinates=${lat},${lon}`; //adresse 
+    const airQ_response = await fetch(airQApiURL);
+    const airQ_json = await airQ_response.json();
+
+    const jsonData = {
+        weather: weather_json,
+        airQuality: airQ_json
+    }
+
+    response.json(jsonData); //renvoit les données
 });
 
 //se déclenche si je fait "node index.js" dans le cmd

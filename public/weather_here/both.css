@@ -24,3 +24,29 @@ h1 {
     border: 5px solid black;
     text-shadow: 3px 3px 1px black;
 }
+
+#meteo,
+#meteo2 {
+    margin: 20px;
+    padding: 7px;
+    border: 2px solid blue;
+    color: brown;
+    font-weight: bold;
+}
+
+#city {
+    font-size: large;
+    font-weight: bolder;
+    text-shadow: 5px 5px 10px blue;
+}
+
+#airQ {
+    font-size: large;
+    font-weight: bolder;
+}
+
+b {
+    font-weight: bolder;
+    font-size: large;
+    color: darkred;
+}
