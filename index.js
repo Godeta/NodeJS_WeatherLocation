@@ -1,7 +1,10 @@
 //index.js est la partie orienté serveur tandis que le html ou d'autres javascript seront les parties clients
 const express = require("express"); //(lorsque l'on fait node index.js ou nodemon index.js) création d'un serveur sur le port 3000 -> http://localhost:3000/
 const Datastore = require("nedb"); //appelle nedb pour stocker les données dans un db
-const fetch = require('node-fetch');
+const fetch = require('node-fetch'); //pour utiliser fetch et récupérer des données depuis le serveur
+require('dotenv').config(); //tout ce qui sera dans dotenv sera chargé comme variable d'environnement ! Permet nottament de ne pas donner ses API keys
+
+//console.log(process.env);
 const app = express();
 app.listen(3000, () => console.log("Listening at 3000"));
 app.use(express.static("public"));
@@ -61,7 +64,7 @@ app.get("/weather/:latlon", async (request, response) => {
     console.log(latlon);
     const lat = latlon[0];
     const lon = latlon[1];
-    const weatherKey = "";
+    const weatherKey = process.env.WEATHER_KEY;
     console.log(lat, lon);
     //Lien de l'api : https://openweathermap.org/current
     const weatherApiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherKey}&units=metric`; //adresse + clé d'accès

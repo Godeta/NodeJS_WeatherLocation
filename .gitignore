@@ -1,2 +1,6 @@
 #la base de données devrait être vide
 GeolocalDatabase.db
+#la clé reste personnelle
+.env
+#node modules, pas besoin de les publier
+node_modules/
