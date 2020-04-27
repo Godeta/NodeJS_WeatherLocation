@@ -1,6 +1,7 @@
 //index.js est la partie orienté serveur tandis que le html ou d'autres javascript seront les parties clients
 const express = require("express"); //(lorsque l'on fait node index.js ou nodemon index.js) création d'un serveur sur le port 3000 -> http://localhost:3000/
 const Datastore = require("nedb"); //appelle nedb pour stocker les données dans un db
+//const fetch = require('node-fetch');
 const app = express();
 app.listen(3000, () => console.log("Listening at 3000"));
 app.use(express.static("public"));
@@ -50,6 +51,14 @@ app.get("/api", (request, response) => {
     })
 
 })
+
+//GET method route
+app.get("/weather", async (request, response) => {
+    const weatherApiURL = 'http://api.weatherstack.com/current/01d429907e72b6c8aafe076ec4908409/New York'; //adresse + clé d'accès
+    const fetch_response = await fetch(weatherApiURL);
+    const json = await fetch_response.json();
+    response.json(json); //renvoit les données
+});
 
 //se déclenche si je fait "node index.js" dans le cmd
 /*objectifs :  1) lorsque l'on accède à la page, afficher tout le html,css,javascript comme normal
