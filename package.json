@@ -1,5 +1,5 @@
 {
-  "name": "Weather_location_api",
+  "name": "weather_location_api",
   "version": "1.0.0",
   "description": "This is a data selfie app with nodeJs and express",
   "main": "index.js",

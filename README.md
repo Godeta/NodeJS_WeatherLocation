@@ -17,11 +17,14 @@ $ git clone https://github.com/Godeta/NodeJS_WeatherLocation.git
 $ cd NodeJS_WeatherLocation
 
 # install the requirements
-$ npm install dotenv
+(you need to install node js if you don't already have it, here's a link : https://nodejs.org/en/ )
+$  npm install dotenv
 $  npm install express
 $  npm install nedb
 $  npm install node-fetch
-$  Weather_Key=(put your api key for openweather, in .env)
+
+(change .env-sample to .env and put your api key for openwheather api, you can get one for free here : https://openweathermap.org/api)
+-  Weather_Key=(put your api key for openweather, in .env)
 ```
 
 ## Usage
@@ -32,3 +35,8 @@ node index.js
 
 
 ![](project_presentation.gif)
+
+### Incoming changes
+- Better design with CSS changes
+- Other apis utilities (js fetch)
+- Better drawing part with the possibility to download (using p5.js)
