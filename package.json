@@ -1,30 +1,23 @@
 {
-  "name": "webcam_site",
+  "name": "Weather_location_api",
   "version": "1.0.0",
   "description": "This is a data selfie app with nodeJs and express",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Godeta/NodeJS_WeatherLocation.git"
-  },
   "keywords": [
-    "webcam",
-    "selfie",
-    "data",
-    "nodeJs"
+    "weather",
+    "api",
+    "selfie"
   ],
-  "author": "Godeta",
+  "author": "Arnaud GODET",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Godeta/NodeJS_WeatherLocation/issues"
-  },
-  "homepage": "https://github.com/Godeta/NodeJS_WeatherLocation#readme",
   "dependencies": {
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "nedb": "^1.8.0"
+    "dotenv": "^8.0.0",
+    "express": "^4.16.4",
+    "nedb": "^1.8.0",
+    "node-fetch": "^2.6.0"
   }
 }
