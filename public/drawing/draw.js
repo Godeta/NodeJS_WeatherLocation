@@ -1,7 +1,8 @@
+let canvas = null;
 //début
 function setup() {
   //création canvas
-  const canvas = createCanvas(300, 200);
+  canvas = createCanvas(300, 200);
   pixelDensity(1);
   background(0);
 
@@ -27,6 +28,16 @@ function setup() {
     console.log(json);
   });
 
+}
+
+
+//permet de télecharger l'image -> clic sur download
+function download() {
+  var download = document.getElementById("download");
+  canvas.loadPixels(); //charge la vidéo dans un Canvas
+  const imageD = canvas.toDataURL("image/png")
+    .replace("image/png", "image/octet-stream");
+  download.setAttribute("href", imageD);
 }
 
 //nettoie si on appuie sur c

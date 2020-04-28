@@ -29,3 +29,6 @@ $  Weather_Key=(put your api key for openweather, in .env)
 ```
 node index.js
 ```
+
+
+![](project_presentation.gif)
