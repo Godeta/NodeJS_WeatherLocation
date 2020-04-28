@@ -1,7 +1,7 @@
 # NodeJS_WeatherLocation
 A first project where I learn to use NodeJs and make a site that ask access to your location and webcam then give informations about it, allows to take a picture, make a drawing and can point it on a map with the weather.
 
-Two hosting platforms :
+### Two hosting platforms :
 - Heroku 
 https://nodejs-weather-location-webcam.herokuapp.com/ 
 
@@ -11,7 +11,7 @@ https://godeta-nodejs-weatherlocation.glitch.me/
 ### Git Installation
 ```
 # clone the repo
-$ git clone https://github.com/sameera-madushan/RepoPeek.git
+$ git clone https://github.com/Godeta/NodeJS_WeatherLocation.git
 
 # change the working directory to NodeJS_WeatherLocation
 $ cd NodeJS_WeatherLocation
